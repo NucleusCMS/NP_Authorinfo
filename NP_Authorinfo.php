@@ -80,7 +80,7 @@ class NP_Authorinfo extends NucleusPlugin {
         global $DIR_MEDIA, $CONF;
         $filename = $DIR_MEDIA . $this->getDirName() . '/' 
             . basename($diplayname) . '.jpg';
-        return @file_exists($filename)
+        return @is_file($filename)
             ? $CONF['MediaURL'] . $this->getDirName() . '/' 
                 . basename($diplayname) . '.jpg'
             : $this->getAdminURL() . '_noimage.jpg';
@@ -235,4 +235,3 @@ class NP_Authorinfo extends NucleusPlugin {
     }
     
 }
-?>
