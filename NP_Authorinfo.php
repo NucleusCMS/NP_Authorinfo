@@ -82,7 +82,7 @@ class NP_Authorinfo extends NucleusPlugin {
             . basename($diplayname) . '.jpg';
         return @file_exists($filename)
             ? $CONF['MediaURL'] . $this->getDirName() . '/' 
-                . basename($diplayname) . '.jpg?' . time()
+                . basename($diplayname) . '.jpg'
             : $this->getAdminURL() . '_noimage.jpg';
     }
     
