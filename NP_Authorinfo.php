@@ -26,13 +26,6 @@
  * @version CSV: $Id: NP_Authorinfo.php,v 1.2 2006/05/23 01:32:28 takab Exp $
  */
 
-// plugin needs to work on Nucleus versions <=2.0 as well
-if (!function_exists('sql_table')) {
-    function sql_table($name) {
-        return 'nucleus_'.$name;
-    }
-}
-
 /**
  * NP_Authorinfo
  * 
