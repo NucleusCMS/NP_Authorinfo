@@ -100,8 +100,7 @@ class PluginAdminAuthorinfo extends PluginAdmin{
     {
         global $CONF, $blogid, $manager;
         $adminurl = $this->plugin->getAdminURL();
-        $deleteurl = htmlspecialchars($manager->addTicketToUrl($adminurl . '?action=deletedone'));
-        
+        $deleteurl = hsc($manager->addTicketToUrl($adminurl . '?action=deletedone'));
         $extraHead = "<script type=\"text/javascript\" src=\"${adminurl}prototype.js\"></script>\n";
         $extraHead .= "<script type=\"text/javascript\" src=\"${adminurl}np_authorinfo.js\"></script>\n";
         $extraHead .= "<script type=\"text/javascript\">\n";
@@ -185,8 +184,8 @@ class PluginAdminAuthorinfo extends PluginAdmin{
         foreach ($memberList as $curMember) {
 ?>
         <tr>
-            <td><?php echo htmlspecialchars($curMember['mrealname'])?></td>
-            <td><img id="authorimg<?php echo intval($curMember['mnumber'])?>" src="<?php echo htmlspecialchars($this->plugin->getAuthorImageByName($curMember['mname']))?>" alt="" width="64"/></td>
+            <td><?php echo hsc($curMember['mrealname'])?></td>
+            <td><img id="authorimg<?php echo intval($curMember['mnumber'])?>" src="<?php echo hsc($this->plugin->getAuthorImageByName($curMember['mname']))?>" alt="" width="64"/></td>
             <td>
                 <input type="button" value="アップロード" onclick="np_authorinfo_uploadimage(event, <?php echo intval($curMember['mnumber'])?>);" /><br />
                 <input type="button" value="削除" onclick="np_authorinfo_deleteimage(event, <?php echo intval($curMember['mnumber'])?>);"/>
@@ -228,7 +227,7 @@ class PluginAdminAuthorinfo extends PluginAdmin{
 </head>
 <body>
 <h1>
-『<?php echo htmlspecialchars($mem->getRealName())?>』さんの画像を
+『<?php echo hsc($mem->getRealName())?>』さんの画像を
 アップロードします
 </h1>
 <form action="./" method="post" enctype="multipart/form-data">
@@ -325,7 +324,7 @@ class PluginAdminAuthorinfo extends PluginAdmin{
             if ($error) {
 ?>                
 <script type="text/javascript">
-  alert('<?php echo htmlspecialchars($error)?>');
+  alert('<?php echo hsc($error)?>');
   if (parent) {
     parent.np_authorinfo_uploadfailure();
   }
@@ -341,7 +340,7 @@ class PluginAdminAuthorinfo extends PluginAdmin{
   if (parent) {
     parent.np_authorinfo_uploadsuccess(
       <?php echo $mnumber?>, 
-      '<?php echo htmlspecialchars($imageurl)?>'
+      '<?php echo hsc($imageurl)?>'
     );
   }
 </script>
