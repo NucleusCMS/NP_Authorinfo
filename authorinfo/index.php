@@ -29,7 +29,7 @@
 
 $basedir = dirname(dirname(dirname(dirname(__FILE__))));
 require "$basedir/config.php";
-require_once "${DIR_LIBS}PLUGINADMIN.php";
+require_once "{$DIR_LIBS}PLUGINADMIN.php";
 
 /**
  * PluginAdminAuthorinfo class
