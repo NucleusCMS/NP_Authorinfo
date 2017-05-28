@@ -127,9 +127,7 @@ class NP_Authorinfo extends NucleusPlugin {
             if ($handle = opendir ($dir)) {
                 while ($entry = readdir ($handle)) {
                     $entry = basename($entry);
-                    if (!is_dir ($dir . $entry) && @file_exists($dir . $entry)) {
-                        unlink ($dir . $entry);
-                    }
+                    if (is_file($dir . $entry)) unlink($dir . $entry);
                 }
                 closedir ($handle);
             }
