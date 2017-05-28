@@ -53,10 +53,10 @@ class PluginAdminAuthorinfo extends PluginAdmin{
      * @access public
      * @since 1.0.0 - 2006/05/22
      */
-    function PluginAdminAuthorinfo()
+    function __construct($pluginName)
     {
-        global $CONF, $blogid, $member;
-        $this->PluginAdmin('Authorinfo');
+        global $CONF, $blogid, $member,$manager;
+          parent::__construct($pluginName);
         
         // Auth check
         if (!$member->isLoggedIn()) {
@@ -96,7 +96,7 @@ class PluginAdminAuthorinfo extends PluginAdmin{
      * @access private
      * @since 1.0.0 - 2006/05/22
      */
-    function start()
+    function start($extraHead = '')
     {
         global $CONF, $blogid, $manager;
         $adminurl = $this->plugin->getAdminURL();
@@ -164,7 +164,7 @@ class PluginAdminAuthorinfo extends PluginAdmin{
         if ($this->auth == 4) {
             $query = 'SELECT mnumber,mname,mrealname FROM '.sql_table('member');
             $res = sql_query($query);
-            while ($arr = mysql_fetch_array($res)) {
+            while ($arr = sql_fetch_array($res)) {
                 if (!empty($arr['mnumber'])) {
                     $memberList[] = $arr;
                 }
@@ -404,7 +404,5 @@ class PluginAdminAuthorinfo extends PluginAdmin{
  
 }
 
-$pAdmin =& new PluginAdminAuthorinfo();
+$pAdmin = new PluginAdminAuthorinfo('Authorinfo');
 $pAdmin->doAction();
-exit();
-?>
