@@ -214,7 +214,8 @@ class PluginAdminAuthorinfo extends PluginAdmin{
         global $manager;
         $actionurl = $this->plugin->getAdminUrl();
         $mnumber = intRequestVar('mnumber');
-        $mem =& MEMBER::createFromID($mnumber);
+        $mem = MEMBER::createFromID($mnumber);
+
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -377,7 +378,7 @@ class PluginAdminAuthorinfo extends PluginAdmin{
         } else if (($this->auth < 4) && $member->getID() != $mnumber) {
             $res = false;
         } else if ($manager->checkTicket() && MEMBER::existsID($mnumber)) {
-            $targetmember =& MEMBER::createFromID($mnumber);
+            $targetmember = MEMBER::createFromID($mnumber);
             
             $uploadfile = $DIR_MEDIA . $this->plugin->getDirName() . '/' 
                 . basename($targetmember->getDisplayName()) . '.jpg';
