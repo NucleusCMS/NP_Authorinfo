@@ -195,14 +195,7 @@ class NP_Authorinfo extends NucleusPlugin {
     function getDescription() {
         return 'Show infomation of author in Template';
     }
-    function supportsFeature($what) {
-        switch ($what) {
-            case 'SqlTablePrefix' :
-                return 1;
-            default :
-                return 0;
-        }
-    }
+    function supportsFeature($what) {return in_array($what,array('SqlTablePrefix','SqlApi'));}
 
     function hasAdminArea() {
         return 1;
